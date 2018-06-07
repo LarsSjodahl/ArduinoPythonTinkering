@@ -1,0 +1,47 @@
+
+1. If you haven't already, install
+	Python3.x
+with the following extra modules
+	tkinter
+	serial
+	math
+	matplotlib
+	time
+	datetime
+
+Also download the latest Arduino IDE from https://www.arduino.cc/en/Main/Software 
+
+2)
+Your kits include:
+1 Arduino, brand new
+1 cable USB to USB-B
+1 breadboard with tre-pin thermo sensor and 4.7kOhm pull-up resistor
+1 Ultrasonic range sensor
+1 9V battery connector
+1 servo, with assortment of actuator arms and screws
+8 connector wires, male-male
+
+handed out separately:
+9V battery
+1 Big Clear LED, w red light. This can be driven directly from Arduino GPIO outputs. The long pin goes to positive and the negative to GND. Don't connect directly to "5V", though...
+1 photo transistor LTR-4206E
+
+14 of the kits also include 
+1 breadboard w L293D quad half-H driver (double bidirectional motor driver, but we only use "left" side), https://goo.gl/images/KKQFkw 
+
+Breadboards work like this:
+https://goo.gl/images/W6Vpso 
+
+3) Agenda 
+*) installation
+*) getting basic serial communication working, set LED from python 
+*) sensor data into python
+*) more power for driving motors. Wiring 
+
+4) Creative Tinker time! Suggestions:
+*) Adding servo function to existing buttons.
+*) adding or modifying buttons.
+*) adding charts w same data (scaling? average?) 
+
+
+
