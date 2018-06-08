@@ -11,7 +11,7 @@ int togglePin = 13;
 int rightPin  = 12;
 int leftPin   = 11;
 int inByte = 0;
-
+int angle =90;
 
 void setup(void) {
   Serial.begin(9600);
@@ -34,18 +34,25 @@ void loop(void) {
     else if(inByte=='R'){      
       digitalWrite(rightPin, HIGH);
       digitalWrite(leftPin, LOW);
+      angle=angle+10;
     }
     else if(inByte=='L'){
       digitalWrite(leftPin, HIGH);
       digitalWrite(rightPin, LOW);
+      angle=angle-10;
     }
     else if(inByte=='S'){
       digitalWrite(rightPin, LOW);
       digitalWrite(leftPin, LOW);
     }
     // feel free to add something for the servo using a variable "angle":
-    // myservo.write(angle)
-    
+    if(angle>180){
+      angle=180;
+    }
+    if (angle<0({
+      angle=0;
+    }    
+    myservo.write(angle); 
   }
   byte i;
   byte present = 0;
