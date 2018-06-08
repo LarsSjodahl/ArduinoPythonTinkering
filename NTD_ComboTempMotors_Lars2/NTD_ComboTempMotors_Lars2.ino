@@ -49,10 +49,10 @@ void loop(void) {
     if(angle>180){
       angle=180;
     }
-    if (angle<0({
+    if (angle<0){
       angle=0;
     }    
-    myservo.write(angle); 
+    myServo.write(angle); 
   }
   byte i;
   byte present = 0;
