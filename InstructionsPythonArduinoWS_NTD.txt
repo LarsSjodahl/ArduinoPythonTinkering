@@ -1,15 +1,18 @@
+0. You are going to need a laptop which can detect an unknown USB device. If your laptop is provided by your company and it has added security about what you can plug into the USB, you might not be able to use it. If you run a virtual machine, and run the software on that, it might work, but otherwise I encourage you to join a person or group which has a laptop that works.
 
 1. If you haven't already, install
 	Python3.x
 with the following extra modules
 	tkinter
-	serial
-	math
+	pyserial (this is used as "serial" but search for "pyserial")
 	matplotlib
+	math
 	time
 	datetime
 
-Also download the latest Arduino IDE from https://www.arduino.cc/en/Main/Software 
+Download the latest Arduino IDE from https://www.arduino.cc/en/Main/Software 
+it just requires java (JRE) to run.
+When you have started the ArduinoIDE, go to the menu Sketch/"Include library"/"Manage libraries...". In the search box, enter "OneWire", and select the library from "Adafruit", which is usually the second item on the list.
 
 2)
 Your kits include:
@@ -35,13 +38,37 @@ https://goo.gl/images/W6Vpso
 3) Agenda 
 *) installation
 *) getting basic serial communication working, set LED from python 
-*) sensor data into python
+*) thermal sensor data into python
+*) Adding servo function to existing buttons.
 *) more power for driving motors. Wiring 
 
+Wiring:
+Look at the link above for how breadboard is connected internally.
+
+Thermo sensor:
+The middle pin goes to pin 10 on the arduino.
+The 2'nd pin that has the resistor connected, goes to 5V on the Arduino.
+The last pin goes to GND on the Arduino.
+
+Servo:
+The brown wire goes to GND on Arduino.
+The red wire goes to 5V on Arduino.
+The last wire goes to pin 9 on Arduino.
+
+Motor:
+Do NOT plug it directly into the Arduino.
+Look at the link above for how to wire motor &breadboard with the IC. 
+Both GND on Arduino and the blac wire on the battery holder goes to the GND on the IC.
+The "Motor" outputs on the IC go to the motor. It doesnt matter with of the red and black wires goes in which.
+The "Control" input on the IC go to pin 12 and 11 on the Arduino.
+The arduino 5V goes to one of the pins that has a tiny wire connecting them at one end.
+The Red wire from the battery holder goes to the "4-36V for controlling motor".
+
 4) Creative Tinker time! Suggestions:
-*) Adding servo function to existing buttons.
 *) adding or modifying buttons.
-*) adding charts w same data (scaling? average?) 
+*) adding charts w same data (scaling? average?)
 
-
+More advanced: 
+*) try the range sensor. Send a short pulse to the "Trig" pin, and wait for the "Echo" pin to go high.
+*) use a photo transistor. You will also need a resistor. Google for an image for how to wire it. You need to connect it+resistor to 5V, a sense pin on the arduino, and GND.
 
