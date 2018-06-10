@@ -20,7 +20,7 @@ y_array = []
 style.use('ggplot')
 fig = plotting.figure(figsize=(9, 3.0), dpi=100)
 ax1 = fig.add_subplot(1, 1, 1) #(Row, column, position_of_this_figure. You could add more charts...)
-ax1.set_ylim(20, 35) # fixed temperature interval on the y-axis
+ax1.set_ylim(10, 30) # fixed temperature interval on the y-axis
 line, = ax1.plot(x_array, y_array, 'r', marker='o')
 
 #-----finding the COM port the Arduino is connected to, on windows.
@@ -45,15 +45,15 @@ theConnection = serial.Serial(ValidPorts[0], 9600, timeout=1)
 filename="Sensorlog_"+datetime.datetime.now().strftime("%H_%M_%S")+".txt"
 
 def animate(i):
-    dataStr = theConnection.readline().decode("ascii")         # THIS is where you get the data in !!!
-    myFile = open(filename, 'a')
-    myFile.write(datetime.datetime.now().strftime("%H:%M:%S") + " " + dataStr + "\n")  # +"\n"
-    myFile.close()
-    if(len( y_array) > 10): # keep the number of plottet values low, and the chart flowing
+    data_str = theConnection.readline().decode("ascii")         # THIS is where you get the data in !!!
+    my_file = open(filename, 'a')
+    my_file.write(datetime.datetime.now().strftime("%H:%M:%S") + " " + data_str + "\n")  # +"\n"
+    my_file.close()
+    if len( y_array) > 10: # keep the number of plottet values low, and the chart flowing
         y_array.pop(0)
         x_array.pop(0)
     try:
-        data = float(dataStr)
+        data = float(data_str)
         y_array.append(data)
         x_array.append(i)
         line.set_data(x_array, y_array)
@@ -76,15 +76,18 @@ class toggleArea:
             print("Turning on LED")
 
     # --- More button-action functions..
-    def right(self):
+    @staticmethod
+    def right():
         print("to the right...")
         theConnection.write("R".encode())
 
-    def left(self):
+    @staticmethod
+    def left():
         print("to the left...")
         theConnection.write("L".encode())
 
-    def stop(self):
+    @staticmethod
+    def stop():
         print("stop moving...")
         theConnection.write("S".encode())
 
